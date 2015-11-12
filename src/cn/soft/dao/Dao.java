@@ -4,6 +4,7 @@ import cn.soft.common.QueryResult;
 
 public interface Dao {
 	
+	
 	/**
 	 * 保存一个对象
 	 * @param entity
