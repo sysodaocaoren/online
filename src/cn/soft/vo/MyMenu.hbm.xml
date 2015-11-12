@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="cn.soft.vo">
+
+	<class name="MyMenu" table="tb_menu">
+		<id name="menu_id" type="integer" >
+			<generator class="native"/>
+		</id>
+		<property name="menu_name"/>
+		<property name="menu_content"/>
+		<property name="menu_price"/>
+		<property name="picture_name"/>
+	</class>
+	
+</hibernate-mapping>

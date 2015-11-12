@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="cn.soft.vo">
+
+	<class name="UserInfo" table="user_info">
+		<id name="id" type="integer" >
+			<generator class="native"/>
+		</id>
+		<property name="address"/>
+		<property name="tel"/>
+		<property name="movPho"/>
+		<property name="notice"/>
+		<property name="sendDate" column="send_date"/>
+		<many-to-one name="user" column="user_id" unique="true"/>
+	</class>
+	
+</hibernate-mapping>

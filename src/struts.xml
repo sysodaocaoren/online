@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!--  用spring作为对象工厂来替代struts2来创建action-->
+    <constant name="struts.objectFactory" value="spring" /> 
+    <package name="pck" namespace="/test" extends="struts-default">
+    	 <!-- 拦截器 -->
+    	
+		<!-- <interceptors>
+			<interceptor name="securityInterceptor" class="cn.soft.interceptor.SecurityInterceptor"/>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="securityInterceptor"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"/> 
+		<global-results>
+			<result name="500">/500.jsp</result>
+		</global-results> -->
+    	<!-- 此处的class的值为spring创建的action类,用类得简单名称进行注入 -->
+    	<action name="query_*" class="listAction" method="{1}">     	
+    		<result name="list">/Book/shipping_Step2.jsp</result>
+    		<result name="fail">/user/message.jsp</result>
+    		<result name="listPage">/index/list.jsp</result>
+    		<result name="noMenu">/Book/noMenu.jsp</result>
+    	</action>
+    	
+    	<action name="user_*" class="personAction" method="{1}">
+    		<result name="message" type="redirect">/user/message.jsp</result>
+    		<result name="fail">/user/message.jsp</result>
+    		<result name="loginSuccess" type="redirectAction">/menu_showMenu.action</result>
+    		<result name="lgmanage" type="redirect">/Manage/manage_index.jsp</result>
+    		<result name="juegeLogin" type="redirectAction">user_juegeLogin.action</result>
+    		<result name="list" type="redirect">/Manage/userManage/usermanage_index.jsp</result>
+    		<result name="manageMessage" type="redirect">/Manage/userManage/message.jsp</result>
+    		<result name="update" type="redirect">/Manage/userManage/update.jsp</result>
+    		<result name="success" type="redirectAction">/user_userList.action</result>
+    	</action>
+    	
+    	<action name="menu_*" class="menuAction" method="{1}">     	
+    		<result name="show" type="redirect">/index.jsp</result>
+    		<result name="info">/Book/bookCook.jsp</result>
+    		<result name="search" type="redirect">/caidanList.jsp</result> 
+    		<result name="update" type="redirect">/Manage/caidan_manage/caidan_update.jsp</result>  
+    		<result name="menulist" type="redirect">/Manage/caidan_manage/caidan_index.jsp</result>
+    		<result name="success" type="redirectAction">/menu_menuList.action</result>  		
+    	</action>
+    	
+    	<action name="order_*" class="orderAction" method="{1}">
+    		<result name="addSuccess" type="redirectAction">/menu_showMenu.action</result>
+    		<result name="login" type="redirectAction">user_juegeLogin.action</result>
+    		<result name="qindan" type="redirect">/Book/shipping_Step4.jsp</result>
+    		<result name="infolist" type="redirect">/Manage/orderMange/orderMain.jsp</result>
+    		<result name="searched" type="redirect">/Manage/orderMange/orderSearch.jsp</result>
+    		<result name="hadFind" type="redirect">/order/showOrder.jsp</result>
+    		<result name="deleteSuccess" type="redirectAction">query_menuList.action</result>
+    		<result name="update" type="redirectAction"><param name="order_accounted"/>order_accounted?fg=1</result>
+    	</action>
+    	
+    	<action name="info_*" class="userInfoAction" method="{1}">
+    		<result name="info">/Book/shipping_Step3.jsp</result>
+    		<result name="saveSuccess" type="redirect">/Book/shipping_Step4.jsp</result>
+    	</action>
+    	
+    	<action name="mg_*" class="messageAction" method="{1}">
+    		<result name="fail" type="redirectAction">user_juegeLogin.action</result>
+    		<result name="mglist" type="redirect">/message/addnote.jsp</result>
+    		<result name="success" type="redirectAction">/mg_messageUI.action</result>
+    		<result name="show" type="redirect">/message/oneself.jsp</result>
+    		<result name="message" type="redirect">/user/message.jsp</result>
+    		<result name="managelist" type="redirect">/Manage/note_manage/manage.jsp</result>
+    		<result name="oneMessage" type="redirect">/Manage/note_manage/onemessage.jsp</result>
+    	</action>
+    	
+    	<action name="chart" class="createChart" method="showPhoto">
+    		<result name="photo" type="redirect" >/index/show.jsp</result>
+    	</action>
+    </package>
+</struts>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="cn.soft.vo">
+
+	<class name="Person" table="tb_user">
+		<id name="user_id" type="integer" >
+			<generator class="native"/>
+		</id>
+		<property name="user_name"/>
+		<property name="user_pass"/>
+		<property name="user_mail"/>
+		<property name="user_realname"/>
+		<property name="user_sex"/>
+		<property name="user_flag"/>
+		<one-to-one name="userinfo" property-ref="user"/><!-- 配置跟UserInfo表的一对一的映射关系 -->
+		
+		<set name="orders">		<!-- 配置跟订单表Orders的一对多的关系映射 -->
+			<key column="user_id" />
+			<one-to-many class="Orders"/>
+		</set>
+		
+		<set name="message">	<!-- 配置跟订单表Message的一对多的关系映射 -->
+			<key column="user_id"/>
+			<one-to-many class="Message"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>

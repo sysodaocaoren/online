@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="cn.soft.vo">
+
+	<class name="Orders" table="orders">
+		<id name="order_id" type="integer" >
+			<generator class="native"/>
+		</id>
+		<property name="order_num"/>
+		<property name="order_notice"/>
+		<property name="other_notice"/>
+		<property name="states"/>
+		<property name="order_date"/>
+		<many-to-one name="user" column="user_id"/>
+		<many-to-one name="menu" column="menu_id" />
+	</class>
+	
+</hibernate-mapping>
