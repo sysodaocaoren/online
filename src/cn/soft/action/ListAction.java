@@ -28,7 +28,7 @@ public class ListAction {
 		if(flag)						//flag为真说明有相关的菜单列表信息，然后返回到list视图，
 		{								//此视图为查看购物车视图shipping_Step2.jsp
 				return "list";
-		}
+		}   
 		else{							//flag为假说明购物车中没有相关的菜单列表信息
 			String message="当前没有你的购物信息！";
 			ac.getSession().setAttribute("message", message);
